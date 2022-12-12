@@ -1,0 +1,103 @@
+1) AUTEUR : id, nom, prenom, datedenaissance
+   SPECTACLE : id, nom, durée, datecreation
+   SALLE : id, nom, capacité
+
+2) id, nom, prenom, datedenaissance
+
+3) CHIFFRÉES :  id, nom, prenom, email, date de naissance
+   
+   HACHÉES : numero carte bancaire, mot de passe
+
+4) Un spectacle peut etre noté par 0 ou plusieurs acheteur
+   Un acheter peut noté 0 ou plusieurs spectacle 
+   Il faut mettre date en clé primaire pour pouvoir regarder le meme spectacle dans la meme salle et a des dates differentes
+
+
+5) SELECT voir.note, acheteur.id FROM voir, acheteur
+   WHERE acheteur.id=voir.idAcheteur
+   ORDER BY acheteur.id
+
+6) SELECT COUNT(*) FROM spectacle
+
+7) SELECT COUNT(*) FROM acheteur
+WHERE YEAR(acheteur.dateNaissance) = "2010"
+
+8) SELECT spectacle.id, spectacle.nom FROM spectacle, voir, acheteur 
+WHERE spectacle.id=voir.idSPECTACLE
+AND acheteur.id=voir.idAcheteur
+AND acheteur.nom = "Foutix"
+
+9) SELECT auteur.nom, salle.nom FROM auteur, spectacle, avoir_lieu, salle
+WHERE spectacle.id=spectacle.idAuteur
+AND spectacle.id=avoir_lieu.idSPECTACLE
+AND salle.id=avoir_lieu.idSALLE
+ORDER BY  salle.nom
+
+10) SELECT AVG(voir.note), spectacle.nom FROM voir, spectacle
+WHERE spectacle.id=voir.idSPECTACLE
+GROUP BY spectacle.nom
+
+11) CREATE VIEW Vue 
+AS SE+LECT spectacle.id,spectacle.nom as nomspec ,spectacle.duree,spectacle.dateCreation,auteur.nom as nomaut ,salle.nom as nomsalle ,type.num,type.nom as nomtype 
+FROM spectacle, auteur, salle, avoir_lieu, type 
+WHERE spectacle.id=spectacle.idAuteur 
+AND spectacle.id=avoir_lieu.idSPECTACLE 
+AND salle.id=avoir_lieu.idSALLE 
+AND type.num=spectacle.numTYPE 
+
+12) Les vues peuvent être utiles si on souhaites que les utilisateurs de la base n'aient pas accès à toutes les données d'une table, par exemple voir l'adresse d'un employé sans pour autant voir son salaire ou si on veut rassembler des données provenant de plusieurs tables dans une seule entité, pour avoir des requêtes plus simples. 
+
+13) Il faut créer une nouvelle table "TARIF" qui faut relier entre SALLE et SPECTACLE avec une association "POSSEDE" qui aura 3 tarif de A à C.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
